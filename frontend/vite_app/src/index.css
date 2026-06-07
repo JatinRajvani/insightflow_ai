@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Backgrounds */
+  --bg-primary: #08090f;
+  --bg-secondary: #0f111a;
+  --bg-card: rgba(20, 22, 37, 0.55);
+  --bg-card-hover: rgba(26, 29, 49, 0.75);
+  
+  /* Borders */
+  --border-color: rgba(255, 255, 255, 0.06);
+  --border-color-glow: rgba(139, 92, 246, 0.25);
+  --border-color-active: rgba(139, 92, 246, 0.5);
+  
+  /* Text */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  /* Accents */
+  --violet: #8b5cf6;
+  --violet-glow: rgba(139, 92, 246, 0.15);
+  --cyan: #06b6d4;
+  --cyan-glow: rgba(6, 182, 212, 0.15);
+  --emerald: #10b981;
+  --emerald-glow: rgba(16, 185, 129, 0.15);
+  
+  /* Sentiment Colors */
+  --sentiment-positive: #10b981;
+  --sentiment-neutral: #64748b;
+  --sentiment-negative: #f43f5e;
+  
+  /* Priority Colors */
+  --priority-low: #10b981;
+  --priority-medium: #f59e0b;
+  --priority-high: #f97316;
+  --priority-critical: #f43f5e;
+  
+  /* Layout */
+  --sidebar-width: 260px;
+  
+  /* Transitions */
+  --trans-fast: 0.2s ease;
+  --trans-normal: 0.3s ease;
+  --trans-slow: 0.5s ease;
+  
+  /* Shadows */
+  --glow-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+  --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Global Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(at 5% 5%, rgba(139, 92, 246, 0.08) 0px, transparent 40%),
+    radial-gradient(at 95% 95%, rgba(6, 182, 212, 0.08) 0px, transparent 40%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--violet);
+}
+
+/* Layout Wrapper */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Glass Card Definition */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--card-shadow);
+  transition: border-color var(--trans-normal), transform var(--trans-normal), box-shadow var(--trans-normal);
+}
+
+.glass-card:hover {
+  border-color: var(--border-color-glow);
+  box-shadow: var(--card-shadow), var(--glow-shadow);
+}
+
+/* Interactive Elements */
+button {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  transition: all var(--trans-fast);
+}
+
+input, textarea, select {
+  font-family: var(--font-sans);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  padding: 12px;
+  outline: none;
+  transition: all var(--trans-fast);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--border-color-active);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.15);
+}
+
+/* Chips and Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* Sentiment badges */
+.badge-positive {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--sentiment-positive);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+.badge-neutral {
+  background: rgba(148, 163, 184, 0.15);
+  color: var(--sentiment-neutral);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+.badge-negative {
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--sentiment-negative);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+}
+
+/* Priority badges */
+.badge-low {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--priority-low);
+}
+.badge-medium {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--priority-medium);
+}
+.badge-high {
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--priority-high);
+}
+.badge-critical {
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--priority-critical);
+}
+
+/* Layout Utilities */
+.flex { display: flex; }
+.align-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-8 { gap: 8px; }
+.gap-16 { gap: 16px; }
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
