@@ -6,7 +6,7 @@ import {
   Copy, Download, CheckCircle2, ChevronRight, ListCollapse
 } from 'lucide-react';
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 export default function GlobalAIRecommendations() {
   const [report, setReport] = useState(null);

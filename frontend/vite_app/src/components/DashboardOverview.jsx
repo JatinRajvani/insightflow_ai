@@ -5,8 +5,8 @@ import {
   ArrowRight, ThumbsUp, ThumbsDown, Minus, RefreshCw, Loader2, Sparkles
 } from 'lucide-react';
 import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
-
-const API_BASE = 'http://localhost:5000/api';
+console.log(import.meta.env.VITE_API_BASE);
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 export default function DashboardOverview({ setActiveTab, setSelectedProduct }) {
   const [overviewData, setOverviewData] = useState(null);
@@ -96,6 +96,9 @@ export default function DashboardOverview({ setActiveTab, setSelectedProduct }) 
       </div>
     );
   }
+if (!overviewData) {
+  return <div>Loading dashboard data...</div>;
+}
 
   const {
     totalProducts,

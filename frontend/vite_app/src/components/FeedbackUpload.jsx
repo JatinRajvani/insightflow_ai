@@ -5,7 +5,7 @@ import {
   ShieldAlert, Zap, MessageSquare, FileSpreadsheet, UploadCloud, ThumbsUp, ThumbsDown, Minus
 } from 'lucide-react';
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 export default function FeedbackUpload() {
   const [uploadMode, setUploadMode] = useState('text'); // 'text' | 'csv'
